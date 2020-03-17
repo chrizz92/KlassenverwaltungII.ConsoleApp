@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KlassenverwaltungII", "KlassenverwaltungII\KlassenverwaltungII.csproj", "{B15D593F-16D6-4650-A6AB-7AC95624A435}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B15D593F-16D6-4650-A6AB-7AC95624A435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B15D593F-16D6-4650-A6AB-7AC95624A435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B15D593F-16D6-4650-A6AB-7AC95624A435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B15D593F-16D6-4650-A6AB-7AC95624A435}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA2FDBBB-D7C2-420E-93B3-0D365FD7612B}
+	EndGlobalSection
+EndGlobal
