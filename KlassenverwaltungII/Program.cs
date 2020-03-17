@@ -1,26 +1,25 @@
 ﻿/**************************************************************************************************************************
- *  
+ *
  *  Übungsnr.:		25
  *	Programmname:	KlassenverwaltungII
  *	Autor:			Christian SCHADLER
  *	Klasse:			4ABIF
  *	Datum:			17.03.2020
- *	
+ *
  *	-----------------------------------------------------------------------------------------------------------------------
- *	Verbesserungsmoeglichkeit/en:	
+ *	Verbesserungsmoeglichkeit/en:
  *  -----------------------------------------------------------------------------------------------------------------------
  *  Kurzbeschreibung:
- *	
+ *
  *	Eine einfache Schulklassenverwaltung. Die Daten eines einzelnen Schülers sind in einer eigenen Klasse Pupil mit den
  *	Feldern _catalogNr, _firstName, _lastName, _zipCode gespeichert.
  *  Die Schüler sind in einem Array vom Typ der Klasse Pupil mit der maximalen Anzahl von 40 gespeichert.
  *  Über ein Menü in der Main-Methode können mehrere Funktionen zur Bearbeitung oder persistenten Speicherung des Arrays
  *  aufgerufen werden. Ist beim Programmstart im Programmverzeichnis eine Datei namens pupils.csv enthalten werden diese
  *  Daten in das pupils-Array geladen.
- *  
+ *
  **************************************************************************************************************************
  */
-
 
 using System;
 using System.IO;
@@ -28,10 +27,10 @@ using System.Text;
 
 namespace KlassenverwaltungII
 {
-    class Program
+    internal class Program
     {
         /// <summary>
-        /// A private method that waits for users keypress before the programm goes on 
+        /// A private method that waits for users keypress before the programm goes on
         /// </summary>
         private static void Acknowledge()
         {
@@ -55,7 +54,7 @@ namespace KlassenverwaltungII
         }
 
         /// <summary>
-        /// A private method that creates a new instances of the class pupil and calls the 4 Set-Methods of the created object. 
+        /// A private method that creates a new instances of the class pupil and calls the 4 Set-Methods of the created object.
         /// </summary>
         /// <returns>The created pupil object</returns>
         private static Pupil CreateNewPupil()
@@ -88,7 +87,7 @@ namespace KlassenverwaltungII
                     length++;
                 }
             }
-        
+
             return length;
         }
 
@@ -117,7 +116,6 @@ namespace KlassenverwaltungII
                     }
                 }
                 length = length - 1;
-
             } while (aPupilHasSwapped);
 
             Console.WriteLine("Sortierung nach KatalogNr abgeschlossen.");
@@ -136,7 +134,6 @@ namespace KlassenverwaltungII
             int length = GetLengthOfPupilArrayWithoutNull(ref pupils);
             int stringComparisonResult;
 
-
             do
             {
                 aPupilHasSwapped = false;
@@ -152,7 +149,6 @@ namespace KlassenverwaltungII
                     }
                 }
                 length = length - 1;
-
             } while (aPupilHasSwapped);
 
             Console.WriteLine("Sortierung nach Nachnamen abgeschlossen.");
@@ -233,7 +229,7 @@ namespace KlassenverwaltungII
         }
 
         /// <summary>
-        /// Takes the reference of an array of pupil and prints for every "_zipCode"-field-value of the pupil objects out how often it occures  
+        /// Takes the reference of an array of pupil and prints for every "_zipCode"-field-value of the pupil objects out how often it occures
         /// </summary>
         /// <param name="pupils"></param>
         public static void PrintOutZipCodeStatistic(ref Pupil[] pupils)
@@ -250,7 +246,6 @@ namespace KlassenverwaltungII
 
                 if (HasZipCodeUsedBefore(ref usedZipCodes, zipCode))
                 {
-
                 }
                 else
                 {
@@ -269,7 +264,6 @@ namespace KlassenverwaltungII
             Acknowledge();
         }
 
-
         /// <summary>
         /// Takes the reference of an array of pupil and writes the containing data into the File pupils.csv in the programm directory
         /// </summary>
@@ -278,24 +272,24 @@ namespace KlassenverwaltungII
         {
             Console.Clear();
             string[] textToWrite = new string[GetLengthOfPupilArrayWithoutNull(ref pupils)];
-            
+
             for (int i = 0; i < textToWrite.Length; i++)
             {
-                    textToWrite[i] = $"{pupils[i].GetCatalogNr()};{pupils[i].GetFirstName()};{pupils[i].GetLastName()};{pupils[i].GetZipCode()}";             
+                textToWrite[i] = $"{pupils[i].GetCatalogNr()};{pupils[i].GetFirstName()};{pupils[i].GetLastName()};{pupils[i].GetZipCode()}";
             }
 
-            File.WriteAllLines("pupils.csv",textToWrite, Encoding.UTF8);
+            File.WriteAllLines("pupils.csv", textToWrite, Encoding.UTF8);
 
             Console.WriteLine("Die Daten wurden in die Datei pupils.csv geschrieben");
             Acknowledge();
 
             /* ALTERNATIVE
-             
+
             for (int j = 0; j < GetLengthOfPupilArrayWithoutNull(ref pupils); j++)
             {
                 File.AppendAllText("pupils.csv", $"{pupils[j].GetCatalogNr()};{pupils[j].GetFirstName()};{pupils[j].GetLastName()};{pupils[j].GetZipCode()}\n", Encoding.UTF8);
-            } 
-            
+            }
+
             */
         }
 
@@ -317,7 +311,7 @@ namespace KlassenverwaltungII
 
             for (int i = 0; i < arrayLength; i++)
             {
-                if(pupils[i].GetCatalogNr() == catalogNr)
+                if (pupils[i].GetCatalogNr() == catalogNr)
                 {
                     for (int j = i; j < arrayLength; j++)
                     {
@@ -345,18 +339,16 @@ namespace KlassenverwaltungII
             }
 
             Acknowledge();
-
         }
 
-
-
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             int menuNr;
             int pupilsIndex = 0;
             int maxPupils = 40;
             Pupil[] pupils = new Pupil[maxPupils];
 
+            //Load content from pupils.csv into pupils[]
             if (File.Exists("pupils.csv"))
             {
                 string[] fileContent = File.ReadAllLines("pupils.csv");
@@ -373,7 +365,7 @@ namespace KlassenverwaltungII
                 }
             }
 
-
+            //Main menu
             do
             {
                 Console.WriteLine("MENÜ:");
@@ -395,7 +387,7 @@ namespace KlassenverwaltungII
                 {
                     case 1:
                         if (pupilsIndex < pupils.Length)
-                        {                   
+                        {
                             AddNewPupilToPupilsArray(ref pupils, ref pupilsIndex);
                         }
                         else
@@ -405,30 +397,39 @@ namespace KlassenverwaltungII
                             Console.Clear();
                         }
                         break;
+
                     case 2:
                         BubbleSortPupilsArrayByCatalogNr(ref pupils);
                         break;
+
                     case 3:
                         BubbleSortPupilsArrayByLastName(ref pupils);
                         break;
+
                     case 4:
                         PrintOutPupilsArray(ref pupils);
                         break;
+
                     case 5:
                         PrintOutPupilIfLastNameMatches(ref pupils);
                         break;
+
                     case 6:
                         PrintOutZipCodeStatistic(ref pupils);
                         break;
+
                     case 7:
                         WritePupilsToFile(ref pupils);
                         break;
+
                     case 8:
                         DeletePupilFromPupilsArray(ref pupils, ref pupilsIndex);
                         break;
+
                     case 0:
-                        //EXIT PROGRAM
+                        //Exit program
                         break;
+
                     default:
                         Console.WriteLine("Ungültige Eingabe! Bitte nur Zahlen zwischen 0 und 8 eingeben.");
                         Console.Write("Bitte beliebige Taste zum Fortfahren drücken . . .");
@@ -436,7 +437,6 @@ namespace KlassenverwaltungII
                         Console.Clear();
                         break;
                 }
-
             } while (menuNr != 0);
         }
     }

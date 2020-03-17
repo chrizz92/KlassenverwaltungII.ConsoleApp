@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace KlassenverwaltungII
+﻿namespace KlassenverwaltungII
 {
     /// <summary>
     /// A class that represents pupils of a school
     /// </summary>
-    class Pupil
+    internal class Pupil
     {
         private int _catalogNr;
         private string _firstName;
