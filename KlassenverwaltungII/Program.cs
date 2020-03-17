@@ -14,7 +14,9 @@
  *	Eine einfache Schulklassenverwaltung. Die Daten eines einzelnen Schülers sind in einer eigenen Klasse Pupil mit den
  *	Feldern _catalogNr, _firstName, _lastName, _zipCode gespeichert.
  *  Die Schüler sind in einem Array vom Typ der Klasse Pupil mit der maximalen Anzahl von 40 gespeichert.
- *  Über ein Menü in der Main-Methode können mehrere Funktionen zur Bearbeitung des Arrays aufgerufen werden.
+ *  Über ein Menü in der Main-Methode können mehrere Funktionen zur Bearbeitung oder persistenten Speicherung des Arrays
+ *  aufgerufen werden. Ist beim Programmstart im Programmverzeichnis eine Datei namens pupils.csv enthalten werden diese
+ *  Daten in das pupils-Array geladen.
  *  
  **************************************************************************************************************************
  */
