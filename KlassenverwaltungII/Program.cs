@@ -271,7 +271,7 @@ namespace KlassenverwaltungII
 
 
         /// <summary>
-        /// 
+        /// Takes the reference of an array of pupil and writes the containing data into the File pupils.csv in the programm directory
         /// </summary>
         /// <param name="pupils"></param>
         public static void WritePupilsToFile(ref Pupil[] pupils)
@@ -300,7 +300,9 @@ namespace KlassenverwaltungII
         }
 
         /// <summary>
-        /// 
+        /// Takes the reference of an array of pupil and the reference of pupilsIndex. The Method asks for a catalognumber and searches in the pupils-Array for it.
+        /// If a pupil with the given catalognumber is found, all following pupils will move left by one step, so the found pupil will be overwritten.
+        /// Then the pupilsIndex will be decreased by one.
         /// </summary>
         /// <param name="pupils"></param>
         /// <param name="pupilsIndex"></param>
